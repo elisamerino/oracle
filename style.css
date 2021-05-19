@@ -1,0 +1,259 @@
+@font-face {
+    font-family: 'Luminari';
+    src: url('fonts/Luminari-Regular.eot'); /* IE9 Compat Modes */
+    src: url('fonts/Luminari-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('fonts/Luminari-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+         url('fonts/Luminari-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Apple Chancery Regular';
+    src: url('fonts/Apple-Chancery-Regular.eot'); /* IE9 Compat Modes */
+    src: url('fonts/Apple-Chancery-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('fonts/Apple-Chancery-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+         url('fonts/Apple-Chancery-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+*{
+    margin:0;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+body{
+    top: 0;
+    margin: 0;
+    font-family: Apple Chancery Regular, Cambria, Cochin, Georgia, serif;
+    width: 100%
+}
+::selection{
+    color: #FFF;
+    background: #6805F2;
+}
+/*VIDEOLOOP*/
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 0;
+  }
+#content{
+    position: relative;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#content form, #content div{
+    width: 90%;
+}
+#question-label, #question-label--2{
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#question-label{
+    height: 120px;
+    background-image: url('assets/ask_grafik.png');
+}
+#question-label--2{
+    height: 180px;
+    background-image: url('assets/question_grafik.png');
+}
+#question-label span, h1#question span{
+    display: none;
+}
+#magic_eye{
+    position: absolute;
+    top: 53%;
+    right: 34%;
+}
+.btn-gradient{
+    border: transparent;
+    cursor: pointer;
+    font-size: 0;
+    background-image: url('assets/magic_eye.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: transparent;
+    padding: 24px 32px;
+}
+.btn{
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    padding: 6px 0;
+    font-size: 1.4rem;
+    letter-spacing: 0.05rem;
+    color: #6805F2;
+    text-shadow: 0 0 1px #D3BFEF;
+    font-family: Apple Chancery Regular, Cambria, Cochin, Georgia, serif;
+}
+/*popup*/
+#orakel-popup{
+    padding-left: 16px;
+    padding-right: 16px;
+}
+h1#question {
+    width: 70%;
+    height: 120px;
+    background-image: url('assets/popup-question.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.address-wrap{
+    display: flex;
+    flex-flow: row wrap;
+}
+.form--wide{
+    width: 100%;
+}
+.form--small{
+    width: 25%;
+    margin-right: 16px;
+}
+.form--small+div{
+    width: 50%;
+}
+input, label {
+    display:block;
+}
+.details_form label{
+    font-size: 1.4rem;
+    margin-left: 5px;
+    margin-bottom: -5px;
+   text-shadow: 0 0 1px #D3BFEF;
+}
+.text--big{
+    font-family: Luminari, serif;
+    font-size: 1.6rem;
+}
+input[type="text"], textarea {
+    background-image : url('assets/input_leiste.png'); 
+    background-size: cover;
+    background-position-y: center;
+    border:1px solid transparent;
+    padding: 8px 12px;
+    /*font-family: Apple Chancery, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;*/
+}
+input[type="text"]:focus {
+    outline: none !important;
+    border:1px solid #6805F2;;
+    box-shadow: 0 0 8px rgba(104, 5, 242, 0.7);
+}
+.textarea {
+    width: 100%
+}
+.details_form{
+    margin-bottom: 8px;
+}
+.legal-wrap div{
+    line-height: 220%;
+}
+/* RADIO */ 
+.radio--container {
+    display: block;
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.radio--container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+.checkmark {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio--container:hover input ~ .checkmark {
+    background-color: #D3BFEF;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+.radio--container input:checked ~ .checkmark {
+    background-color: #D3BFEF;
+}
+  
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+  /* Show the indicator (dot/circle) when checked */
+.radio--container input:checked ~ .checkmark:after {
+    display: block;
+}
+/* Style the indicator (dot/circle) */
+.radio--container .checkmark:after {
+    top: 4px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #6805F2;
+    filter: blur(.1rem);
+} 
+/*impressum*/
+.impressum-container p{
+    font-size: 1.4rem;
+}
+h1{
+    font-size: 2rem;
+}
+@media only screen and (min-width: 768px){
+    #content form, #content .impressum-container{
+        width: 50%;
+    }
+    h1#question {
+        width: 46%;
+        height: 160px;
+      }
+    .address-wrap{
+        width: 66.6666%;
+        float: left;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .legal-wrap{
+        width: 33.3333%;
+        float: right;
+    }
+    .legal-wrap div{
+        margin-left: -7.5%;
+        margin-top: 48px;
+    }
+    .details_form input{
+        max-width: 100%;
+        margin-right: 16px;
+    }
+    .text--big{
+        font-size: 2rem;
+    }
+}

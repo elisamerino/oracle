@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href='assets/favicon.ico' type="image/x-icon">
+    <title>Orakel</title>
+</head>
+<body id="orakel-popup">
+    <form class="form-wrap" name = "addressForm">
+        <h1 id="question"><span>Would you like us to answer you?</span></h1>
+        <div class="address-wrap">
+            <div class="details_form form--wide">
+                <label for="name">favourite name & last name</label>
+                <input class="textarea" type="text" id="name" name="name">
+                <span id="error-name"></span>
+            </div>
+            <div class="details_form form--wide">
+                <label for="address">street address</label>
+                <input class="textarea" type="text" id="address" name="address">
+            </div>
+            <div class="details_form form--small">
+                <label>postcode</label>
+                <input  class="textarea" type="text" name = "postcode">
+            </div>
+            <div class="details_form">
+                <label>city</label>
+                <input  class="textarea" type="text" name = "city">
+            </div>
+            <div class="details_form">
+                <label>country</label>
+                <input  class="textarea" type="text" name = "country">
+            </div>
+        </div>
+        <div class="legal-wrap">
+            <div>
+                <p class="text--big">
+                    We promise to only use this data for the sake of this psychic correspondence.
+                </p>
+                <label class="radio--container text--big" for="yes">Alright
+                    <input type="radio" name="datenschutz" id="yes">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio--container text--big" for="no" >NO HELL NO
+                    <input type="radio" name="datenschutz" id="no">
+                    <span class="checkmark"></span>
+                </label>
+                <button class="btn" type="submit" onclick="send()">send</button>
+            </div>
+        </form>
+    </div>
+    <script>
+    function validateForm() {
+        if( document.addressForm.name.value == "" ) {
+            document.getElementById('error-name').innerHTML = "Please enter your name"
+            document.addressForm.name.focus() ;
+            return false;
+         }
+         if( document.addressForm.address.value == "" ) {
+            alert( "Please fill in" );
+            document.addressForm.address.focus();
+            return false;
+         }
+         if( document.addressForm.postcode.value == "" || isNaN( document.addressForm.postcode.value ) ||
+            document.addressForm.postcode.value.length != 5 ) {   
+            alert( "Please provide a postcode in the format #####." );
+            document.addressForm.postcode.focus() ;
+            return false;
+         }
+         if( document.addressForm.country.value == "-1" ) {
+            alert( "Please provide your country!" );
+            console.log("Please provide your country!")
+            return false;
+         }
+         window.opener.postMessage("Information was sent to our database","*");
+         return( true );
+        }
+    function send(){
+        event.preventDefault();
+        validateForm();
+        };
+    </script>
+</body>
+</html>
