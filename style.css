@@ -52,7 +52,7 @@ body{
     align-items: center;
     justify-content: center;
 }
-#content form, #content div{
+#content form, .impressum-container{
     width: 90%;
 }
 #question-label, #question-label--2{
@@ -61,32 +61,34 @@ body{
     background-repeat: no-repeat;
     background-position: center;
 }
+/*IMAGE*/
+.img-responsive{
+    position: relative;
+    overflow: hidden;
+}
 #question-label{
-    height: 120px;
+    padding-bottom: 20%;
     background-image: url('assets/ask_grafik.png');
 }
 #question-label--2{
-    height: 180px;
+    padding-bottom: 34%;
     background-image: url('assets/question_grafik.png');
 }
-#question-label span, h1#question span{
+#question-label span, #question-address span{
     display: none;
 }
-#magic_eye{
-    position: absolute;
-    top: 53%;
-    right: 34%;
+#question-address{
+    padding-bottom: 34%;
 }
 .btn-gradient{
+    position: absolute;
+    top: 26%;
+    right: 20%;
     border: transparent;
+    background-color: transparent;
     cursor: pointer;
     font-size: 0;
-    background-image: url('assets/magic_eye.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    background-color: transparent;
-    padding: 24px 32px;
+    transform-origin: center center;
 }
 .btn{
     background-color: transparent;
@@ -99,18 +101,21 @@ body{
     text-shadow: 0 0 1px #D3BFEF;
     font-family: Apple Chancery Regular, Cambria, Cochin, Georgia, serif;
 }
+#magic_eye{
+    background: radial-gradient( #6805F2 30%, transparent 75%, transparent);
+    display: block;
+    height: 28px;
+    width: 28px;
+}
 /*popup*/
 #orakel-popup{
     padding-left: 16px;
     padding-right: 16px;
 }
-h1#question {
-    width: 70%;
-    height: 120px;
+#question-address {
     background-image: url('assets/popup-question.jpg');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
 }
 .address-wrap{
     display: flex;
@@ -231,10 +236,20 @@ h1{
     #content form, #content .impressum-container{
         width: 50%;
     }
-    h1#question {
-        width: 46%;
-        height: 160px;
-      }
+    #magic_eye{
+        background: radial-gradient( #6805F2 30%, transparent 75%, transparent);
+        display: block;
+        height: 36px;
+        width: 36px;
+        transition: all 0.3s;
+    }
+    .btn-gradient:hover #magic_eye{
+        height: 48px;
+        width: 48px;
+    }
+    #question-address{
+        padding-bottom: 16%;
+    }
     .address-wrap{
         width: 66.6666%;
         float: left;
