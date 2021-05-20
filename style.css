@@ -85,13 +85,15 @@ body{
 }
 .btn-gradient{
     position: absolute;
-    top: 26%;
-    right: 20%;
+    top: 34%;
+    right: 23.5%;
     border: transparent;
     background-color: transparent;
     cursor: pointer;
     font-size: 0;
     transform-origin: center center;
+    height: 0;
+    width: 0;
 }
 .btn{
     background-color: transparent;
@@ -113,6 +115,7 @@ body{
     display: block;
     height: 28px;
     width: 28px;
+    transform: translate(-14px, -14px);
 }
 
 @keyframes blink {
@@ -329,6 +332,7 @@ h1{
     #magic_eye{
         height: 48px;
         width: 48px;
+        transform: translate(-24px, -24px);
     }
     .btn-gradient:hover #magic_eye{
         animation-play-state: paused
