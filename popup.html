@@ -75,7 +75,8 @@
     // Form Validation
     function validateForm() {
         if( document.addressForm.name.value == "" ) {
-            document.getElementById('error-name').innerHTML = "Please enter your name"
+            alert( "Please enter your name" );
+            //document.getElementById('error-name').innerHTML = "Please enter your name"
             document.addressForm.name.focus() ;
             return false;
          }
@@ -91,8 +92,7 @@
             return false;
          }
          if( document.addressForm.country.value == "-1" ) {
-            alert( "Please provide your country!" );
-            console.log("Please provide your country!")
+            alert( "Please provide your country" );
             return false;
          }
          content.classList.add('hide');
