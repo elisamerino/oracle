@@ -105,11 +105,11 @@ body{
     background-color: transparent;
     border: transparent;
     cursor: pointer;
-    padding: 6px 0;
+    padding: 3px 0;
     font-size: 1.4rem;
     letter-spacing: 0.05rem;
     color: #6805F2;
-    text-shadow: 0 0 1px #D3BFEF;
+    text-shadow: 0 0 2px #D3BFEF;
     font-family: Apple Chancery Regular, Cambria, Cochin, Georgia, serif;
 }
 #magic_eye{
