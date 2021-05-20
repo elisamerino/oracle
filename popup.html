@@ -8,50 +8,71 @@
     <link rel="shortcut icon" href='assets/favicon.ico' type="image/x-icon">
     <title>Orakel</title>
 </head>
-<body id="orakel-popup">
-    <form class="form-wrap" name = "addressForm">
-        <h1 id="question-address" class="img-responsive"><span>Would you like us to answer you?</span></h1>
-        <div class="address-wrap">
-            <div class="details_form form--wide">
-                <label for="name">favourite name & last name</label>
-                <input class="textarea" type="text" id="name" name="name">
-                <span id="error-name"></span>
-            </div>
-            <div class="details_form form--wide">
-                <label for="address">street address</label>
-                <input class="textarea" type="text" id="address" name="address">
-            </div>
-            <div class="details_form form--small">
-                <label>postcode</label>
-                <input  class="textarea" type="text" name = "postcode">
-            </div>
-            <div class="details_form">
-                <label>city</label>
-                <input  class="textarea" type="text" name = "city">
-            </div>
-            <div class="details_form">
-                <label>country</label>
-                <input  class="textarea" type="text" name = "country">
-            </div>
+<body>
+    <div id="stars-background"></div>
+    <div id="content">
+        <div id="form-wrapper">
+            <form class="form-wrap" name = "addressForm">
+                <h1 id="question-address" class="img-responsive"><span>Would you like us to answer you?</span></h1>
+                <div class="address-wrap">
+                    <div class="details_form form--wide">
+                        <label for="name">favourite name & last name</label>
+                        <input class="textarea" type="text" id="name" name="name">
+                        <span id="error-name"></span>
+                    </div>
+                    <div class="details_form form--wide">
+                        <label for="address">street adddressss</label>
+                        <input class="textarea" type="text" id="address" name="address">
+                    </div>
+                    <div class="details_form form--small">
+                        <label>postcode</label>
+                        <input  class="textarea" type="text" id="postcode" name="postcode">
+                    </div>
+                    <div class="details_form">
+                        <label>city</label>
+                        <input  class="textarea" type="text" id="city" name="city">
+                    </div>
+                    <div class="details_form">
+                        <label>country</label>
+                        <input  class="textarea" type="text" id="country" name = "country">
+                    </div>
+                </div>
+                     
+                <div id="data-permission--column" class="data-wrap">
+                    <div id="kastenrahmen"></div>   
+                    <div id="data-permission">
+                        <p class="text--big">
+                            we PROMISE to ONLY use this data for the sake of this psychic correspondence.
+                        </p>
+                        <label class="radio--container text--big" for="yes">I believe you
+                            <input type="radio" name="datenschutz" id="yes">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio--container text--big" for="no" >NO HELL NO
+                            <input type="radio" name="datenschutz" id="no">
+                            <span class="checkmark"></span>
+                        </label>
+                            <button class="btn" type="submit" onclick="send()">send</button>
+                    </div>      
+                </div>
+            </form>
         </div>
-        <div class="legal-wrap">
-            <div>
-                <p class="text--big">
-                    We promise to only use this data for the sake of this psychic correspondence.
-                </p>
-                <label class="radio--container text--big" for="yes">Alright
-                    <input type="radio" name="datenschutz" id="yes">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="radio--container text--big" for="no" >NO HELL NO
-                    <input type="radio" name="datenschutz" id="no">
-                    <span class="checkmark"></span>
-                </label>
-                <button class="btn" type="submit" onclick="send()">send</button>
-            </div>
-        </form>
+        <div id="thank you" class="hide">
+            <video autoplay muted loop >
+                <source src="assets/thankyou_.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
     <script>
+    // loading Gracefully
+    var content = document.getElementById("form-wrapper");
+    var stars = document.getElementById("stars-background");
+    var video = document.getElementById("thank you");
+    var dataForm = document.getElementById("data-permission");
+    window.onload = function() {
+    dataForm.classList.add('show-time');
+    };
+    // Form Validation
     function validateForm() {
         if( document.addressForm.name.value == "" ) {
             document.getElementById('error-name').innerHTML = "Please enter your name"
@@ -74,7 +95,9 @@
             console.log("Please provide your country!")
             return false;
          }
-         window.opener.postMessage("Information was sent to our database","*");
+         content.classList.add('hide');
+         stars.classList.add('hide');
+         video.classList.remove('hide');
          return( true );
         }
     function send(){

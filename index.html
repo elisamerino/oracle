@@ -13,14 +13,14 @@
         <source src="assets/orakel_background.mp4" type="video/mp4">
     </video>
     <div id="content">
-        <form id="question" class="form--question">
+        <form id="form--question" class="form--question">
             <span id="confirmation"></span>
             <label id="question-label" class="img-responsive" for="question">
                 <span>Ask a question</span>
             </label>
             <input class="textarea" type="text" id="question" name="question">
             <div class="img-responsive" id="question-label--2">
-                <button class="btn-gradient" onclick="openRequestedPopup()">send<span id="magic_eye"></span></button>
+                <a class="btn-gradient" onclick="" href="popup.html">send<span id="magic_eye"></span></a>
             </div>
         </form>
     </div>
@@ -30,20 +30,6 @@
     const height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
     var left = (screen.width/2)-(width/2);
     var top = (screen.height/2)-(height/2);
-    var windowObjectReference;
-    var windowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=yes,status=yes, width=920, height=540, top=100, left=100;";
-    function openRequestedPopup() {
-        event.preventDefault()
-        windowObjectReference = window.open("popup.html", "address", windowFeatures);
-        }
-    
-    window.addEventListener("message", (event) => {
-        if (event.origin !== "popup.html")
-        document.getElementById('confirmation').innerHTML = "ALLRIGHT, WE GOT YOUR INFORMATION!"
-            return;
-            event.source.postMessage("allrighty",
-            event.origin);
-        }, false);
     </script>
 </body>
 </html>

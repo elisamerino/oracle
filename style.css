@@ -52,7 +52,7 @@ body{
     align-items: center;
     justify-content: center;
 }
-#content form, .impressum-container{
+#form--question, #form-wrapper, .impressum-container{
     width: 90%;
 }
 #question-label, #question-label--2{
@@ -60,6 +60,9 @@ body{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+.hide{
+    display: none;
 }
 /*IMAGE*/
 .img-responsive{
@@ -102,16 +105,42 @@ body{
     font-family: Apple Chancery Regular, Cambria, Cochin, Georgia, serif;
 }
 #magic_eye{
+    transition: all 0.3s;
+    animation: blink 3s infinite;
     background: radial-gradient( #6805F2 30%, transparent 75%, transparent);
+    background-position: center;
+    background-repeat: no-repeat;
     display: block;
     height: 28px;
     width: 28px;
 }
+
+@keyframes blink {
+    0% {
+        background-size:50% 50%;
+        opacity: 0.05;
+    }
+    50%{
+        background-size:100% 100%;
+        opacity: 1;
+    }
+    100% {
+        background-size:50% 50%;
+        opacity: 0.05;
+    }
+  }
 /*popup*/
-#orakel-popup{
-    padding-left: 16px;
-    padding-right: 16px;
-}
+#stars-background {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+    height: 50%;
+    width: 50%;
+    background-image: url('assets/sterne.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 #question-address {
     background-image: url('assets/popup-question.jpg');
     background-size: contain;
@@ -142,15 +171,35 @@ input, label {
 }
 .text--big{
     font-family: Luminari, serif;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    line-height: 90%;
 }
 input[type="text"], textarea {
-    background-image : url('assets/input_leiste.png'); 
+    font-size: 1.4rem;
+    text-shadow: 0 0 2px #D3BFEF;
+    background-position: center;
     background-size: cover;
-    background-position-y: center;
     border:1px solid transparent;
     padding: 8px 12px;
-    /*font-family: Apple Chancery, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;*/
+    font-family: Apple Chancery Regular, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+input#question{
+    background-image : url('assets/input_leiste.png'); 
+}
+input#name{
+    background-image : url('assets/name_balken.jpg');
+}
+input#address{
+    background-image : url('assets/addresss_balken.jpg');
+}
+input#postcode{
+    background-image : url('assets/postcode_balken.jpg'); 
+}
+input#city{
+    background-image : url('assets/citi_balken.jpg'); 
+}
+input#country{
+    background-image : url('assets/country_balken.jpg');
 }
 input[type="text"]:focus {
     outline: none !important;
@@ -162,9 +211,6 @@ input[type="text"]:focus {
 }
 .details_form{
     margin-bottom: 8px;
-}
-.legal-wrap div{
-    line-height: 220%;
 }
 /* RADIO */ 
 .radio--container {
@@ -186,7 +232,7 @@ input[type="text"]:focus {
   }
 .checkmark {
     position: absolute;
-    top: 12px;
+    top: 2px;
     left: 0;
     height: 16px;
     width: 16px;
@@ -232,20 +278,60 @@ input[type="text"]:focus {
 h1{
     font-size: 2rem;
 }
+
+#kastenrahmen{
+    background-size: contain;
+    background-image: url('assets/kastenrahmen.jpg');
+    background-repeat: no-repeat;
+    z-index: -1;
+    position: absolute;
+}
+#data-permission{
+    z-index: 50;
+}
+/*load Gracefully*/
+#form--question{
+    animation: fadeInAnimation ease 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@media only screen and (max-width: 768px){
+    #kastenrahmen{
+        margin-left: -2.5%;
+        margin-top: -24px;
+        height: 360px;
+        width: 360px;
+    }
+    #data-permission{
+        width: 330px;
+        margin-top: 1.5rem;
+        transform: translateX(220%);
+        transition: transform 5s ease-out;
+        transition-delay: 2s;
+    }
+    
+    #data-permission.show-time{
+        transform: translateX(00%);
+    }
+}
 @media only screen and (min-width: 768px){
-    #content form, #content .impressum-container{
-        width: 50%;
+    #form--question, #form-wrapper, .impressum-container{
+        width: 80%;
     }
     #magic_eye{
-        background: radial-gradient( #6805F2 30%, transparent 75%, transparent);
-        display: block;
-        height: 36px;
-        width: 36px;
-        transition: all 0.3s;
-    }
-    .btn-gradient:hover #magic_eye{
         height: 48px;
         width: 48px;
+    }
+    .btn-gradient:hover #magic_eye{
+        animation-play-state: paused
     }
     #question-address{
         padding-bottom: 16%;
@@ -256,19 +342,34 @@ h1{
         display: flex;
         flex-flow: row wrap;
     }
-    .legal-wrap{
+    .data-wrap{
         width: 33.3333%;
         float: right;
     }
-    .legal-wrap div{
+    .data-wrap div{
         margin-left: -7.5%;
-        margin-top: 48px;
     }
     .details_form input{
         max-width: 100%;
         margin-right: 16px;
     }
     .text--big{
-        font-size: 2rem;
+        font-size: 2.2rem;
+    }
+    #data-permission{
+        margin-top: -80vh;
+        transition: margin-top 7.5s ease-out;
+        transition-delay: 2s;
+    }
+    
+    #data-permission.show-time{
+        margin-top: 48px;
+    }
+    .checkmark {
+        top: 8px;
+    }
+    #kastenrahmen{
+        z-index: -1;
+        position: absolute;
     }
 }
