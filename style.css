@@ -28,7 +28,8 @@ body{
     top: 0;
     margin: 0;
     font-family: Apple Chancery Regular, Cambria, Cochin, Georgia, serif;
-    width: 100%
+    width: 100%;
+    overflow-x: hidden;
 }
 ::selection{
     color: #FFF;
@@ -49,8 +50,13 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+}
+#orakel-start #content{
+    align-items: center;
+}
+#orakel-address #content{
+    margin-top: 2.5rem;
 }
 #form--question, #form-wrapper, .impressum-container{
     width: 90%;
@@ -145,7 +151,7 @@ body{
     background-repeat: no-repeat;
   }
 #question-address {
-    background-image: url('assets/popup-question.jpg');
+    background-image: url('assets/answer.png');
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -174,7 +180,7 @@ input, label {
 }
 .text--big{
     font-family: Luminari, serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     line-height: 90%;
 }
 input[type="text"], textarea {
@@ -284,13 +290,14 @@ h1{
 
 #kastenrahmen{
     background-size: contain;
-    background-image: url('assets/kastenrahmen.jpg');
+    background-image: url('assets/kastenrahmen.png');
     background-repeat: no-repeat;
     z-index: -1;
     position: absolute;
 }
 #data-permission{
     z-index: 50;
+    padding-right: 5%;
 }
 /*load Gracefully*/
 #form--question{
@@ -326,9 +333,6 @@ h1{
     }
 }
 @media only screen and (min-width: 768px){
-    #form--question, #form-wrapper, .impressum-container{
-        width: 80%;
-    }
     #magic_eye{
         height: 48px;
         width: 48px;
@@ -358,14 +362,19 @@ h1{
         margin-right: 16px;
     }
     .text--big{
-        font-size: 2.2rem;
+        font-size: calc(1.6rem + 0.5vw);
+    }
+    .details_form label{
+        font-size: 1.6rem;
+    }
+    .btn{
+        font-size: 1.6rem;
     }
     #data-permission{
         margin-top: -80vh;
         transition: margin-top 7.5s ease-out;
         transition-delay: 2s;
     }
-    
     #data-permission.show-time{
         margin-top: 48px;
     }
@@ -375,5 +384,29 @@ h1{
     #kastenrahmen{
         z-index: -1;
         position: absolute;
+        margin-top: 24px;
+        width: 35%;
+        padding-top: 33%;
+        margin-left: -5%;
+    }
+}
+@media only screen and (min-width: 1260px){
+    #form--question, #form-wrapper, .impressum-container{
+        width: 80%;
+    }
+    #magic_eye{
+        height: 64px;
+        width: 64px;
+        transform: translate(-32px, -32px);
+    }
+    .text--big{
+        font-size: calc(2rem + 0.5vw);
+    }
+    #kastenrahmen{
+        margin-top: 6px;
+        width: 33.33%;
+        padding-top: 27%;
+        margin-left: -4%;
+        background-position-y: bottom;
     }
 }
