@@ -114,7 +114,7 @@ body{
 }
 #magic_eye{
     transition: all 0.3s;
-    animation: blink 3s infinite;
+    animation: blink 4.5s infinite;
     background: radial-gradient( #6805F2 30%, transparent 75%, transparent);
     background-position: center;
     background-repeat: no-repeat;
@@ -226,7 +226,7 @@ input[type="text"]:focus {
     display: block;
     position: relative;
     padding-left: 24px;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
     cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;
@@ -297,7 +297,7 @@ h1{
 }
 #data-permission{
     z-index: 50;
-    padding-right: 5%;
+    padding-right: 2.75%;
 }
 /*load Gracefully*/
 #form--question{
@@ -355,14 +355,14 @@ h1{
         float: right;
     }
     .data-wrap div{
-        margin-left: -7.5%;
+        margin-left: -10%;
     }
     .details_form input{
         max-width: 100%;
         margin-right: 16px;
     }
     .text--big{
-        font-size: calc(1.6rem + 0.5vw);
+        font-size: calc(1.4rem + 1.2vw);
     }
     .details_form label{
         font-size: 1.6rem;
@@ -384,7 +384,6 @@ h1{
     #kastenrahmen{
         z-index: -1;
         position: absolute;
-        margin-top: 24px;
         width: 35%;
         padding-top: 33%;
         margin-left: -5%;
@@ -400,7 +399,11 @@ h1{
         transform: translate(-32px, -32px);
     }
     .text--big{
-        font-size: calc(2rem + 0.5vw);
+        font-size: calc(1.8rem + 1.2vw);
+    }
+    #data-permission{
+        z-index: 50;
+        padding-right: 2%;
     }
     #kastenrahmen{
         margin-top: 6px;
