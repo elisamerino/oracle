@@ -10,17 +10,17 @@
 </head>
 <body id="orakel-start">
     <video autoplay muted loop id="myVideo">
-        <source src="https://user-images.githubusercontent.com/25285045/119226960-fb4b9100-bb0b-11eb-9143-d923f613c86b.mp4" type="video/mp4" id="video-src">
+        <source src="assets/orakel_kurz.mp4" type="video/mp4" id="video-src">
     </video>
     <div id="content">
-        <form id="form--question" class="form--question">
+        <form id="form--question" class="form--question" name="questionForm">
             <span id="confirmation"></span>
             <label id="question-label" class="img-responsive" for="question">
                 <span>Ask a question</span>
             </label>
             <input class="textarea" type="text" id="question" name="question">
             <div class="img-responsive" id="question-label--2">
-                <button class="btn-gradient" onclick="">send<a href="popup.html" id="magic_eye"></a></button>
+                <button id="myBtn" class="btn-gradient" onclick="send()">send<a href="popup.html" id="magic_eye"></a></button>
             </div>
         </form>
     </div>
@@ -28,6 +28,7 @@
     <script>
     var isMobile = document.getElementById("mobile-indicator");
     var video = document.getElementById("video-src");
+    var input = document.getElementById("question");
     window.onload = function() {
         const style = getComputedStyle(isMobile)
     if(style.display == "block"){
@@ -36,6 +37,29 @@
         video.setAttribute("src", videoSmall);
     }
     };
+    function send(){
+        event.preventDefault();
+        var question = "";
+        if( document.questionForm.question.value == "" ) {
+            alert( "** ☆ Please enter your question ☆ **" );
+            //document.getElementById('error-name').innerHTML = "Please enter your name"
+            document.addressForm.name.focus() ;
+            return false;
+         }
+        question = document.questionForm.question.value
+        var addressUrl = "popup.html?question=" + question;
+        window.open(addressUrl ,"_self");
+    };
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            console.log("ba")
+            // Trigger the button element with a click
+            //document.getElementById("myBtn").click();
+        }
+});
     </script>
 </body>
 </html>
