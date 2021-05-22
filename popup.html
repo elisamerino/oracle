@@ -45,11 +45,11 @@
                             we PROMISE to ONLY use this data for the sake of this psychic corre&shy;spond&shy;ence.
                         </p>
                         <label class="radio--container text--big" for="yes">I believe you
-                            <input type="radio" name="datenschutz" id="yes">
+                            <input type="radio" name="privacy" id="yes" value="true">
                             <span class="checkmark"></span>
                         </label>
                         <label class="radio--container text--big" for="no" >NO HELL NO
-                            <input type="radio" name="datenschutz" id="no">
+                            <input type="radio" name="privacy" id="no" value="false">
                             <span class="checkmark"></span>
                         </label>
                             <button class="btn" type="submit" onclick="send()">send</button>
@@ -57,7 +57,7 @@
                 </div>
             </form>
         </div>
-        <div id="thank you" class="hide">
+        <div id="thank-you" class="hide fade-in">
             <video autoplay muted loop >
                 <source src="assets/thankyou_.mp4" type="video/mp4">
             </video>
@@ -67,7 +67,7 @@
     // loading Gracefully
     var content = document.getElementById("form-wrapper");
     var stars = document.getElementById("stars-background");
-    var video = document.getElementById("thank you");
+    var video = document.getElementById("thank-you");
     var dataForm = document.getElementById("data-permission");
     window.onload = function() {
     dataForm.classList.add('show-time');
@@ -91,8 +91,12 @@
             document.addressForm.postcode.focus() ;
             return false;
          }
-         if( document.addressForm.country.value == "-1" ) {
+         if( document.addressForm.country.value == "" ) {
             alert( "Please provide your country" );
+            return false;
+         }
+         if( document.addressForm.privacy.value != "true" && document.addressForm.privacy.value != true ) {
+            alert( "Please agree to get a letter from us" );
             return false;
          }
          content.classList.add('hide');
