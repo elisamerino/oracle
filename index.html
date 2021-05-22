@@ -29,10 +29,11 @@
     var isMobile = document.getElementById("mobile-indicator");
     var video = document.getElementById("video-src");
     window.onload = function() {
-    if(isMobile.style.display=="block"){
+        const style = getComputedStyle(isMobile)
+    if(style.display == "block"){
+        console.log("im smol")
         var videoSmall = "assets/orakel_kurz_small.mp4";
         video.setAttribute("src", videoSmall);
-        video.load();
     }
     };
     </script>
