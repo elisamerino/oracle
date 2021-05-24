@@ -26,39 +26,37 @@
     </div>
     <div id="mobile-indicator"></div>
     <script>
-    var isMobile = document.getElementById("mobile-indicator");
-    var video = document.getElementById("video-src");
-    var input = document.getElementById("question");
-    window.onload = function() {
-        const style = getComputedStyle(isMobile)
-    if(style.display == "block"){
-        console.log("im smol")
-        var videoSmall = "https://user-images.githubusercontent.com/25285045/119226960-fb4b9100-bb0b-11eb-9143-d923f613c86b.mp4";
-        video.setAttribute("src", videoSmall);
-    }
-    };
-    function send(){
-        event.preventDefault();
-        var question = "";
-        if( document.questionForm.question.value == "" ) {
-            alert( "** ☆ Please enter your question ☆ **" );
-            //document.getElementById('error-name').innerHTML = "Please enter your name"
-            document.addressForm.name.focus() ;
-            return false;
-         }
-        question = document.questionForm.question.value
-        var addressUrl = "popup.html?question=" + question;
-        window.open(addressUrl ,"_self");
-    };
-    // Execute a function when the user releases a key on the keyboard
-    input.addEventListener("keyup", function(event) {
-        if (event.keyCode === 13) {
-            // Cancel the default action, if needed
-            event.preventDefault();
-            // Trigger the button element with a click
-            /document.getElementById("myBtn").click();
+        var isMobile = document.getElementById("mobile-indicator");
+        var video = document.getElementById("video-src");
+        var input = document.getElementById("question");
+        window.onload = function() {
+            const style = getComputedStyle(isMobile)
+        if(style.display == "block"){
+            var videoSmall = "https://user-images.githubusercontent.com/25285045/119226960-fb4b9100-bb0b-11eb-9143-d923f613c86b.mp4";
+            video.setAttribute("src", videoSmall);
         }
-});
-    </script>
+        };
+        function send(){
+            event.preventDefault();
+            var question = "";
+            if( document.questionForm.question.value == "" ) {
+                alert( "** ☆ Please enter your question ☆ **" );
+                document.addressForm.name.focus() ;
+                return false;
+             }
+            question = document.questionForm.question.value
+            var addressUrl = "popup.html?question=" + question;
+            window.open(addressUrl ,"_self");
+        };
+        // Execute a function when the user releases a key on the keyboard
+        input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                document.getElementById("myBtn").click();
+            }
+    });
+        </script>
 </body>
 </html>
