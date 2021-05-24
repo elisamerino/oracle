@@ -100,8 +100,8 @@ body{
 }
 .btn-gradient{
     position: absolute;
-    top: 34%;
-    right: 23.75%;
+    top: 36%;
+    right: 22.25%;
     border: transparent;
     background-color: transparent;
     cursor: pointer;
@@ -406,9 +406,9 @@ h1{
         width: 80%;
     }
     #magic_eye{
-        height: 64px;
-        width: 64px;
-        transform: translate(-32px, -32px);
+        height: 74px;
+        width: 74px;
+        transform: translate(-37px, -37px);
     }
     .text--big{
         font-size: calc(1.8rem + 1.2vw);
