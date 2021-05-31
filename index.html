@@ -20,7 +20,7 @@
             </label>
             <input class="textarea" type="text" id="question" name="question">
             <div class="img-responsive" id="question-label--2">
-                <button id="myBtn" class="btn-gradient" onclick="send()">send<a href="popup.html" id="magic_eye"></a></button>
+                <button id="myBtn" class="btn-gradient" onclick="send()">send<a href="mail.html" id="magic_eye"></a></button>
             </div>
         </form>
     </div>
@@ -45,7 +45,7 @@
                 return false;
              }
             question = document.questionForm.question.value
-            var addressUrl = "popup.html?question=" + question;
+            var addressUrl = "mail.html?question=" + question;
             window.open(addressUrl ,"_self");
         };
         // Execute a function when the user releases a key on the keyboard
