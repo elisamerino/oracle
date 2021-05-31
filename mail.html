@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href='assets/favicon.ico' type="image/x-icon">
+    <title>Orakel</title>
+</head>
+<body id="orakel-address">
+    <div id="stars-background"></div>
+    <div id="content">
+        <div id="form-wrapper">
+            <form class="form-wrap" name = "addressForm">
+                <h1 id="question-address" class="img-responsive"><span>Would you like us to answer you?</span></h1>
+                <div class="address-wrap">
+                    <div class="details_form form--wide">
+                        <label for="name">favourite name & last name</label>
+                        <input class="textarea" type="text" id="name" name="name">
+                        <span id="error-name"></span>
+                    </div>
+                    <div class="details_form form--wide">
+                        <label for="address">street adddressss</label>
+                        <input class="textarea" type="text" id="address" name="address">
+                    </div>
+                    <div class="details_form form--small">
+                        <label>postcode</label>
+                        <input  class="textarea" type="text" id="postcode" name="postcode">
+                    </div>
+                    <div class="details_form">
+                        <label>city</label>
+                        <input  class="textarea" type="text" id="city" name="city">
+                    </div>
+                    <div class="details_form">
+                        <label>country</label>
+                        <input  class="textarea" type="text" id="country" name = "country">
+                    </div>
+                </div>
+                     
+                <div id="data-permission--column" class="data-wrap">
+                    <div id="kastenrahmen"></div>   
+                    <div id="data-permission">
+                        <p class="text--big">
+                            we PROMISE to ONLY use this data for the sake of this psychic corre&shy;spond&shy;ence.
+                        </p>
+                        <label class="radio--container text--big" for="yes">I believe you
+                            <input type="radio" name="privacy" id="yes" value="true">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio--container text--big" for="no" >NO HELL NO
+                            <input type="radio" name="privacy" id="no" value="false">
+                            <span class="checkmark"></span>
+                        </label>
+                            <button class="btn" type="submit" onclick="send()">send</button>
+                            <a class="link link-data" onclick="openinfo()" >*more information<a>
+                    </div>      
+                </div>
+            </form>
+        </div>
+        <div id="thank-you" class="hide fade-in">
+            <video autoplay playsinline muted loop >
+                <source src="assets/thankyou.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <script>
+    // loading Gracefully
+    var content = document.getElementById("form-wrapper");
+    var stars = document.getElementById("stars-background");
+    var video = document.getElementById("thank-you");
+    var dataForm = document.getElementById("data-permission");
+    var windowObjectReference;
+    var windowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=yes";
+
+    window.onload = function() {
+    dataForm.classList.add('show-time');
+    };
+    // Data protection pop up
+    function openinfo(){
+        event.preventDefault();
+        windowObjectReference = window.open("datenschutz.html", "_blank", windowFeatures);
+    }
+    // Form Validation
+    function validateForm() {
+        if( document.addressForm.name.value == "" ) {
+            alert( "If you would like to receive a letter from us please enter your name" );
+            //document.getElementById('error-name').innerHTML = "Please enter your name"
+            document.addressForm.name.focus() ;
+            return false;
+         }
+         if( document.addressForm.address.value == "" ) {
+            alert( "Please fill in" );
+            document.addressForm.address.focus();
+            return false;
+         }
+         if( document.addressForm.postcode.value == "" || isNaN( document.addressForm.postcode.value ) ||
+            document.addressForm.postcode.value.length != 5 ) {   
+            alert( "Please provide a postcode in the format #####." );
+            document.addressForm.postcode.focus() ;
+            return false;
+         }
+         if( document.addressForm.country.value == "" ) {
+            alert( "Please provide your country" );
+            return false;
+         }
+         if( document.addressForm.privacy.value != "true" && document.addressForm.privacy.value != true ) {
+            alert( "Please agree to get a letter from us" );
+            return false;
+         }
+         content.classList.add('hide');
+         stars.classList.add('hide');
+         video.classList.remove('hide');
+         return( true );
+        }
+    function send(){
+        event.preventDefault();
+        validateForm();
+        };
+    </script>
+</body>
+</html>
