@@ -9,10 +9,18 @@
     <title>Ask a question</title>
 </head>
 <body id="orakel-start">
-    <video autoplay muted loop id="myVideo">
-        <source src="https://user-images.githubusercontent.com/25285045/119226960-fb4b9100-bb0b-11eb-9143-d923f613c86b.mp4" type="video/mp4" id="video-src">
+    <div id="welcome">
+        <div id="welcome-img">
+            <span>Welcome! You're now connected with an oracle</span>
+            <img id="welcome-line" src="assets/linie.png"/>
+            <div class="wlan-container"><img id="welcome-wlan" src="assets/wlan.png"/></div>
+            <div id="blinking_eye"><span></span></div>
+        </div>
+    </div>
+    <video autoplay muted loop id="myVideo" class="timer timer-hide">
+            <source src="https://user-images.githubusercontent.com/25285045/119226960-fb4b9100-bb0b-11eb-9143-d923f613c86b.mp4" type="video/mp4" id="video-src">
     </video>
-    <div id="content">
+    <div id="content" class="timer timer-hide">
         <form id="form--question" class="form--question" name="questionForm">
             <span id="confirmation"></span>
             <label id="question-label" class="img-responsive" for="question">
@@ -29,6 +37,15 @@
         var isMobile = document.getElementById("mobile-indicator");
         var video = document.getElementById("video-src");
         var input = document.getElementById("question");
+        var hiddenElements = document.getElementsByClassName('timer');
+        setTimeout(function(){
+            for( var i=0 ; i <= hiddenElements.length - 1 ; i++ ){
+                console.log(hiddenElements[i])
+                document.getElementById('welcome').classList.add('timer-hide')
+                hiddenElements[i].classList.remove('timer-hide');
+            }
+            }, 10000);
+
         window.onload = function() {
             const style = getComputedStyle(isMobile)
         if(style.display == "block"){
@@ -45,7 +62,7 @@
                 return false;
              }
             question = document.questionForm.question.value
-            var addressUrl = "mail.html?question=" + question;
+            var addressUrl = "popup.html?question=" + question;
             window.open(addressUrl ,"_self");
         };
         // Execute a function when the user releases a key on the keyboard
