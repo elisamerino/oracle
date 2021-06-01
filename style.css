@@ -115,6 +115,7 @@ body{
 }
 #orakel-start #content{
     align-items: center;
+    flex-direction: column;
 }
 #orakel-address #content, .datenschutz-container{
     margin-top: 2.5rem;

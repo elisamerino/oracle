@@ -31,6 +31,7 @@
                 <button id="myBtn" class="btn-gradient" onclick="send()">send<a href="mail.html" id="magic_eye"></a></button>
             </div>
         </form>
+        <a class="link link-data" onclick="openinfo()" >*more information</a>
     </div>
     <div id="mobile-indicator"></div>
     <script>
@@ -38,6 +39,8 @@
         var video = document.getElementById("video-src");
         var input = document.getElementById("question");
         var hiddenElements = document.getElementsByClassName('timer');
+        var windowFeatures = "menubar=no,location=no,innerwidth=720,resizable=yes,scrollbars=yes";
+
         setTimeout(function(){
             for( var i=0 ; i <= hiddenElements.length - 1 ; i++ ){
                 console.log(hiddenElements[i])
@@ -45,6 +48,11 @@
                 hiddenElements[i].classList.remove('timer-hide');
             }
             }, 10000);
+                // Data protection pop up
+                function openinfo(){
+                    event.preventDefault();
+                    windowObjectReference = window.open("datenschutz.html", "_blank", windowFeatures);
+                    }
 
         window.onload = function() {
             const style = getComputedStyle(isMobile)
